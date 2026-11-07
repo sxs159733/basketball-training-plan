@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>篮球系统训练计划 · 70集 / 28天</title>
+  <meta name="description" content="把 70 集篮球教学视频拆成 28 天训练计划：每天看什么、练什么、如何复盘，一站式打卡并导出学习记录。">
+  <meta name="theme-color" content="#101d2c">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+
+  <div class="site-top">
+    <div class="top-inner">
+      <a class="brand" href="#top" aria-label="篮球系统训练计划，回到顶部">
+        <svg class="brand-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="2"/>
+          <path d="M3 16h26M16 3v26M6.2 6.2c6 5.1 6 14.5 0 19.6M25.8 6.2c-6 5.1-6 14.5 0 19.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-text">
+          <strong>篮球系统训练计划</strong>
+          <span>BASKETBALL · 28 DAYS</span>
+        </span>
+      </a>
+      <div class="top-actions">
+        <span class="save-status" id="saveStatus"><i></i><span id="saveText">本地自动保存</span></span>
+        <button class="btn btn-ghost-light" id="exportTop" type="button">导出 Word</button>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">BASKETBALL FUNDAMENTALS · 70 EPISODES</p>
+        <h1>把 70 集视频，<br><em>练成自己的动作。</em></h1>
+        <p class="hero-lede">从规则、站姿、传接球，到运球、投篮、防守和实战。28 天，每天 40 分钟，按顺序练，留下自己的复盘。</p>
+        <div class="hero-stats" aria-label="计划数据">
+          <div><strong>28</strong><span>天计划</span></div>
+          <div><strong>70</strong><span>集视频</span></div>
+          <div><strong>140</strong><span>分钟视频</span></div>
+          <div><strong>4</strong><span>次复盘</span></div>
+        </div>
+      </div>
+
+      <div class="today-card" id="todayCard">
+        <div class="today-head"><span class="label">TODAY</span><span id="todayDate">—</span></div>
+        <div class="today-day" id="todayDay">DAY —</div>
+        <h2 id="todayTitle">正在读取计划</h2>
+        <p class="today-meta" id="todayMeta">—</p>
+        <div class="today-track" aria-hidden="true"><div id="todayBar"></div></div>
+        <p class="today-hint" id="todayHint"></p>
+        <button class="btn btn-primary" id="goToday" type="button">查看今日任务 <span aria-hidden="true">→</span></button>
+      </div>
+    </div>
+    <div class="hero-court" aria-hidden="true">
+      <div class="court-circle"></div>
+      <div class="court-line"></div>
+      <span class="hero-ghost">28</span>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div class="layout">
+      <section class="plan" aria-labelledby="planTitle">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow dark">THE PLAN</p>
+            <h2 id="planTitle">28 天训练表</h2>
+          </div>
+          <p class="section-note">先看视频，再按练习做一遍。点击任意一天展开详情，记录会自动保存。</p>
+        </div>
+
+        <div class="week-nav" id="weekNav" role="tablist" aria-label="按周查看计划"></div>
+        <div class="week-brief" id="weekBrief"></div>
+        <div id="planDays"></div>
+      </section>
+
+      <aside class="sidebar" aria-label="学习进度、设置与导出">
+        <div class="side-card">
+          <div class="side-top">
+            <span class="label">YOUR PROGRESS</span>
+            <span id="sidePercent">0%</span>
+          </div>
+          <div class="progress-track" aria-hidden="true"><div id="overallBar"></div></div>
+          <p class="progress-caption" id="overallCaption">还没有开始。先看完第 1 天的视频，再完成练习。</p>
+          <div class="stat-grid">
+            <div><strong id="statVideos">0<span>/70</span></strong><small>已看视频</small></div>
+            <div><strong id="statDays">0<span>/28</span></strong><small>完成训练日</small></div>
+            <div><strong id="statNotes">0<span>/28</span></strong><small>已写感悟</small></div>
+          </div>
+          <div class="week-bars" id="weekBars" aria-label="各周完成情况"></div>
+        </div>
+
+        <div class="side-card">
+          <h3>计划设置</h3>
+          <label class="field-label" for="startDate">开始日期</label>
+          <input class="input" type="date" id="startDate">
+          <p class="field-hint">改日期会同步更新每一天的星期与“今天”标记。</p>
+          <button class="btn btn-primary wide" id="exportWord" type="button">下载学习记录（Word）</button>
+          <div class="button-row">
+            <button class="btn btn-secondary" id="backupBtn" type="button">备份记录</button>
+            <label class="btn btn-secondary file-btn">导入备份<input type="file" id="importFile" accept="application/json,.json"></label>
+          </div>
+          <details class="more">
+            <summary>数据与隐私</summary>
+            <p>打卡和笔记只保存在当前浏览器的本地存储中，不会上传服务器。换设备或清理浏览器前，请先“备份记录”。</p>
+            <button class="text-danger" id="resetBtn" type="button">清空全部记录</button>
+          </details>
+        </div>
+
+        <div class="side-note">
+          <span class="dot" aria-hidden="true"></span>
+          <span>每次训练后写 2 句话：今天最顺的动作 + 一个待解决的问题。下次练之前先看一眼。</span>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <section class="index-section shell" aria-labelledby="indexTitle">
+    <details class="index-details" id="indexDetails">
+      <summary>
+        <span>
+          <span class="eyebrow dark">COURSE INDEX</span>
+          <strong id="indexTitle">70 集内容速查</strong>
+        </span>
+        <span class="index-hint">展开目录，查看每集简介</span>
+        <span class="chevron" aria-hidden="true">⌄</span>
+      </summary>
+      <div class="index-body">
+        <div class="index-tools">
+          <label class="search-wrap">
+            <span class="sr-only">搜索课程</span>
+            <input id="courseSearch" type="search" placeholder="搜索标题或内容，例如：挡拆、上篮、防守">
+          </label>
+          <span id="searchCount">70 集</span>
+        </div>
+        <div id="courseIndex"></div>
+        <p class="index-empty" id="indexEmpty" hidden>没有找到匹配的课程，换个关键词试试。</p>
+      </div>
+    </details>
+  </section>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <p>视频来源：<a href="https://www.bilibili.com/video/BV1F14y1E7jq/" target="_blank" rel="noopener">Bilibili · 篮球系统教学（入门到精通）</a>。内容简介与训练安排为学习辅助整理，仅作个人学习使用。</p>
+      <p>训练前请热身，量力而行；如有伤病请遵医嘱。</p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <noscript>
+    <p style="padding:16px;background:#fbe4d8;color:#101d2c;">这个页面需要 JavaScript 才能打卡、保存和导出记录。请启用 JavaScript 后刷新。</p>
+  </noscript>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
