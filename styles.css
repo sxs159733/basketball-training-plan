@@ -12,17 +12,20 @@
   --orange-soft: #fbe4d8;
   --cream: #f3efe5;
   --paper: #fffdf8;
-  --muted: #657181;
-  --muted-2: #8a94a1;
+  --muted: #4f5a68;
+  --muted-2: #5a6471;
   --line: rgba(16, 29, 44, 0.12);
   --line-strong: rgba(16, 29, 44, 0.2);
   --green: #2f7d5c;
+  /* 浅色背景上的文字专用深色调，原色作小字仅 3.03:1 / 4.24:1 */
+  --green-ink: #245c44;
+  --orange-ink: #a83e17;
   --green-soft: #e2f0e8;
   --gold: #d6a545;
   --white: #ffffff;
   --shadow: 0 14px 38px rgba(16, 29, 44, 0.09);
   --radius: 16px;
-  --font-body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
   --font-num: "Bahnschrift", "DIN Alternate", "Arial Narrow", Impact, var(--font-body);
 }
 
@@ -444,7 +447,7 @@ svg {
 }
 
 .today-head .label {
-  color: var(--orange);
+  color: var(--orange-ink);
   font-weight: 700;
 }
 
@@ -713,7 +716,7 @@ svg {
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.16em;
-  color: var(--orange);
+  color: var(--orange-ink);
   white-space: nowrap;
 }
 
@@ -844,7 +847,7 @@ svg {
   padding: 1px 7px;
   border-radius: 4px;
   background: #eee5d4;
-  color: #7a6a51;
+  color: #6b5d45;
   font-family: var(--font-body);
   font-size: 9.5px;
   font-weight: 500;
@@ -887,12 +890,12 @@ svg {
 
 .status-pill.active {
   background: var(--orange-soft);
-  color: #b64419;
+  color: var(--orange-ink);
 }
 
 .status-pill.done {
   background: var(--green-soft);
-  color: var(--green);
+  color: var(--green-ink);
 }
 
 .chevron {
@@ -1025,7 +1028,7 @@ svg {
   padding: 1px 6px;
   border-radius: 5px;
   background: var(--orange-soft);
-  color: #b64419;
+  color: var(--orange-ink);
   font-family: var(--font-num);
   font-size: 9px;
   font-weight: 700;
@@ -1061,7 +1064,7 @@ svg {
   padding: 1px 5px;
   border-radius: 4px;
   background: #f0e2c8;
-  color: #87642a;
+  color: #755722;
   font-size: 9px;
   line-height: 1.5;
   white-space: nowrap;
@@ -1085,11 +1088,11 @@ svg {
   margin: 3px 0 0;
   font-size: 12px;
   line-height: 1.6;
-  color: #687383;
+  color: var(--muted);
 }
 
 .video-row.done .v-summary {
-  color: #7c8b80;
+  color: #5b675e;
 }
 
 /* practice */
@@ -1122,7 +1125,7 @@ svg {
 
 .practice-time {
   font-size: 10.5px;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.7);
   white-space: nowrap;
 }
 
@@ -1243,7 +1246,7 @@ svg {
 }
 
 .note-field textarea::placeholder {
-  color: #a49d90;
+  color: var(--muted-2);
 }
 
 .note-field textarea:focus {
@@ -1298,7 +1301,7 @@ svg {
   font-size: 24px;
   font-weight: 800;
   line-height: 1;
-  color: var(--orange);
+  color: var(--orange-ink);
 }
 
 .progress-track {
