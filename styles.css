@@ -73,6 +73,30 @@ svg {
   outline-offset: 3px;
 }
 
+/* ---------- skip link ---------- */
+
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 16px;
+  z-index: 200;
+  padding: 10px 16px;
+  border-radius: 0 0 10px 10px;
+  background: var(--orange);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 650;
+  text-decoration: none;
+  transition: top 0.18s ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 0;
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+}
+
 .sr-only {
   position: absolute !important;
   width: 1px;
